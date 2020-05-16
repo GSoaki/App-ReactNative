@@ -4,17 +4,16 @@
     "slug": "AppE",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/splash2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#4682b4"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,8 +24,9 @@
     "ios": {
       "supportsTablet": true
     },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
+    "androidNavigationBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#4682b4"
     }
   }
 }
