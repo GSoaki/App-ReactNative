@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, TextInput, View, StyleSheet } from 'react-native';
-
+import Icon from 'react-native-ionicons'
 import styles from '../styles/pagesStyles';
 import { OptionButton } from '../OptionButton';
 
@@ -56,10 +56,10 @@ export default function Play({ navigation }) {
     < View style={styles.container} contentContainerStyle={styles.contentContainer} >
 
       <TouchableOpacity style={[playStyles.addInputButton, playStyles.text]} onPress={() => playerMenu()}>
-        <Text>{PlayerNumber}</Text>
+        <Icon name="ion-android-person" /><Text>{playerNumber}</Text>
       </TouchableOpacity>
 
-      <View style={[playStyles.playerMenu, !inputTextON && { display: 'none' }]}>
+      <View style={[playStyles.playerMenuStyle, !inputTextON && { display: 'none' }]}>
         <View style={playStyles.inputView}>
 
           <TextInput style={[playStyles.playerInput, playStyles.text]} onChangeText={text => setDefaultInputText(text)} value={defaultInputText} />
@@ -124,7 +124,7 @@ const playStyles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
   },
-  playerMenu: {
+  playerMenuStyle: {
     zIndex: 1,
     backgroundColor: '#4682b4',
     height: 400,
