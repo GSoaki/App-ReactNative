@@ -3,22 +3,26 @@ import { StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1c5787',
+        backgroundColor: '#020c1c',
     },
     option: {
-        backgroundColor: '#4682b4',
-        height: 80,
-        width: 300,
+        backgroundColor: '#091324',
+        padding:20,
+        paddingHorizontal:60,
         margin: 30,
-        borderWidth: StyleSheet.hairlineWidth,
         alignItems: 'center',
         justifyContent:'center',
-        borderRadius: 30,
+        borderRadius: 10,
+        elevation: 20,
+    },
+    alignContainer:{
+        alignContent:'center'
     },
     optionText: {
         fontSize: 20,
         textAlign: 'center',
         color: 'white',
+        fontWeight:'bold',
     },
     MainText: {
         marginTop:10,

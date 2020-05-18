@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, View, Image} from 'react-native';
+import { Text, StyleSheet, View, Image } from 'react-native';
 
-import { RectButton } from 'react-native-gesture-handler';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 //import {PlayerList} from '../pages/Play'
 
@@ -31,15 +31,11 @@ export default function Game({ navigation }) {
 
         <View style={[gameStyles.container, styles.container]} contentContainerStyle={styles.contentContainer}>
 
-            <RectButton style={gameStyles.card}>
+            <TouchableHighlight style={gameStyles.card}>
 
                 <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget magna diam. Proin efficitur eros nibh, eget porta lacus egestas ut. Nunc vel mauris quis nisi interdum feugiat. Vestibulum aliquet neque at sem pellentesque venenatis. Phasellus aliquet dolor eu iaculis euismod. Integer ligula dolor, dignissim id ligula et, mollis tempor est.</Text>
 
-            </RectButton>
-
-            <View style={gameStyles.card2} />
-            <View style={gameStyles.card3} />
-            <View style={gameStyles.card4} />
+            </TouchableHighlight>
 
         </View>
 
@@ -60,8 +56,14 @@ const gameStyles = StyleSheet.create({
         width: 320,
         justifyContent: 'center',
         zIndex: 1,
-        borderBottomWidth:1,
-        borderColor:'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 2,
+            height: 5,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 20,
     },
     card2: {
         backgroundColor: 'gray',
@@ -69,8 +71,8 @@ const gameStyles = StyleSheet.create({
         width: 320,
         zIndex: 0,
         top: -2,
-        borderBottomWidth:2,
-        borderColor:'white',
+        borderBottomWidth: 2,
+        borderColor: 'white',
     },
     card3: {
         backgroundColor: 'blue',
@@ -78,8 +80,8 @@ const gameStyles = StyleSheet.create({
         width: 320,
         zIndex: -1,
         top: -4,
-        borderBottomWidth:2,
-        borderColor:'white',
+        borderBottomWidth: 2,
+        borderColor: 'white',
     },
     card4: {
         backgroundColor: 'red',
@@ -87,8 +89,8 @@ const gameStyles = StyleSheet.create({
         width: 320,
         zIndex: -2,
         top: -6,
-        borderBottomWidth:2,
-        borderColor:'white',
+        borderBottomWidth: 2,
+        borderColor: 'white',
     },
     cardText: {
         color: 'white',

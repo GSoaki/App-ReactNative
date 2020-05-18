@@ -11,13 +11,10 @@ const GeneralStatusBarColor = ({ backgroundColor, ...props }) => (
 
 );
 
-
 const styles = StyleSheet.create({
     statusBar: {
         height: STATUSBAR_HEIGHT
     }
 });
-
-
 
 export default GeneralStatusBarColor;

@@ -65,9 +65,9 @@ const gameStyles = StyleSheet.create({
         width: 320,
         justifyContent: 'center',
         zIndex: 1,
-        borderBottomWidth: 1,
-        borderColor: 'white',
         marginTop:20,
+        elevation:20,
+        elevation:20,
     },
     cardText: {
         color: 'white',

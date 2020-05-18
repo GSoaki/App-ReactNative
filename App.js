@@ -6,7 +6,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-      <GeneralStatusBarColor backgroundColor="#4682b4"
+      <GeneralStatusBarColor backgroundColor="#091324"
       barStyle="light-content"/>
       <Routes />
       </>
