@@ -15,7 +15,7 @@ const screens = {
 
 const Routes = createAppContainer(
     createStackNavigator(screens,{defaultNavigationOptions:{
-        headerStyle:{backgroundColor:'#091324',height:70},
+        headerStyle:{backgroundColor:'#111b2c',height:70},
         headerTintColor:'white',
     }}
     ),

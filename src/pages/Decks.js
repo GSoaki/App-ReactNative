@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, View, Image, TouchableHighlight, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 
-import styles from '../styles/pagesStyles';
+import styles from '../styles/styles';
 
 Shot = () => {
     const shotStyle = {
@@ -21,29 +21,29 @@ export default function Decks({ navigation }) {
 
         <ScrollView style={ styles.container} contentContainerStyle={styles.contentContainer}>
 
-            <TouchableHighlight style={gameStyles.card}>
+            <TouchableOpacity style={gameStyles.card}>
 
                 <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
 
-            </TouchableHighlight>
+            </TouchableOpacity>
 
-            <TouchableHighlight style={gameStyles.card}>
-
-                <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-
-            </TouchableHighlight>
-
-            <TouchableHighlight style={gameStyles.card}>
+            <TouchableOpacity style={gameStyles.card}>
 
                 <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
 
-            </TouchableHighlight>
+            </TouchableOpacity>
 
-            <TouchableHighlight style={gameStyles.card}>
+            <TouchableOpacity style={gameStyles.card}>
 
                 <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
 
-            </TouchableHighlight>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={gameStyles.card}>
+
+                <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+
+            </TouchableOpacity>
 
 
         </ScrollView>

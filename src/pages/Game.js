@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, StyleSheet, View, Image } from 'react-native';
 
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import * as data from './../game/Basic.json';
 
 //import {PlayerList} from '../pages/Play'
 
-import styles from '../styles/pagesStyles';
+import styles from '../styles/styles';
 
 
 //"https://www.freepik.com/free-photos-vectors/menu" Menu vector created by vectorpocket - www.freepik.com
@@ -26,16 +28,42 @@ Shot = () => {
     />;
 };
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 export default function Game({ navigation }) {
+
+    const [cardId, setCardId] = useState('');
+
+    var arr = data.cards
+    var novo = 1
+
+    changeCard = () => {
+
+        novo = getRandomIntInclusive(0,5)
+        console.log(novo)
+
+        for (var item of arr) {
+
+            if (item.id == novo) {
+                setCardId(item.texto)
+            }
+
+        }
+    }
+
     return (
 
         <View style={[gameStyles.container, styles.container]} contentContainerStyle={styles.contentContainer}>
 
-            <TouchableHighlight style={gameStyles.card}>
+            <TouchableOpacity onPress={() => changeCard()} style={gameStyles.card}>
 
-                <Text style={gameStyles.cardText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget magna diam. Proin efficitur eros nibh, eget porta lacus egestas ut. Nunc vel mauris quis nisi interdum feugiat. Vestibulum aliquet neque at sem pellentesque venenatis. Phasellus aliquet dolor eu iaculis euismod. Integer ligula dolor, dignissim id ligula et, mollis tempor est.</Text>
+                <Text style={gameStyles.cardText}>{cardId}</Text>
 
-            </TouchableHighlight>
+            </TouchableOpacity>
 
         </View>
 

@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Text, TextInput, View, StyleSheet, AsyncStorage, ScrollView } from 'react-native';
+import { TouchableOpacity, Text, TextInput, View, StyleSheet, AsyncStorage } from 'react-native';
 import { Icon } from 'react-native-elements'
 
-import { OptionButton } from '../OptionButton';
-import styles from '../styles/pagesStyles';
 
-const MAX_PLAYER_NUMBER = 4
+import styles from '../styles/styles';
+
+
+const MAX_PLAYER_NUMBER = 8
 var thereArePlayers = false
 
 export default function Play({ navigation, route }) {
   const [playerNumber, setPlayerNumber] = useState(0);
-  const [otherPlayer, setPlayer] = useState('');
+  const [playerArray, setPlayerArray] = useState([]);
+  const [player, setPlayer] = useState('')
   const [inputTextON, setInputON] = useState(false);
   const [backMenuOp, setMenuOp] = useState(false);
   const [defaultInputText, setDefaultInputText] = useState('');
 
-  var players = {
-    name: '',
-    number: 0,
-  }
+  var PlayerString = ''
 
   playerMenu = () => {
     if (!inputTextON) {
@@ -33,10 +32,10 @@ export default function Play({ navigation, route }) {
   }
 
   storePlayer = async () => {
-    return (await AsyncStorage.setItem('playerNumber', JSON.stringify(playerNumber+1))
+    return (await AsyncStorage.setItem('playerNumber', JSON.stringify(playerNumber + 1))
       .then(json => console.log('success!'))
       .catch(error => console.log('error!')),
-      await AsyncStorage.setItem('playerStorage', JSON.stringify(otherPlayer))
+      await AsyncStorage.setItem('playerStorage', JSON.stringify(playerArray))
         .then(json => console.log('success!'))
         .catch(error => console.log('error!')))
   }
@@ -44,6 +43,7 @@ export default function Play({ navigation, route }) {
   removeStoredPlayer = async () => {
     setPlayerNumber(0)
     setPlayer('')
+    setPlayerArray([])
     return (await AsyncStorage.setItem('playerNumber', JSON.stringify(0))
       .then(json => console.log('success!'))
       .catch(error => console.log('error!')),
@@ -62,8 +62,17 @@ export default function Play({ navigation, route }) {
 
       await AsyncStorage.getItem('playerStorage')
         .then(req => JSON.parse(req))
-        .then(json => setPlayer(json))
+        .then(json => setPlayerArray(json))
+        .then(teste => showPlayer())
         .catch(error => console.log('error!')))
+  }
+
+  showPlayer = () => {
+
+    PlayerString = playerArray.join('\n\n')
+
+    setPlayer(PlayerString)
+
   }
 
   if (thereArePlayers == false) {
@@ -75,20 +84,25 @@ export default function Play({ navigation, route }) {
     thereArePlayers = true
     setDefaultInputText('')
     if (playerNumber < MAX_PLAYER_NUMBER) {
-      setPlayerNumber(playerNumber + 1)
-      let player = 'player' + (playerNumber+1)
 
-      
+      setPlayerNumber(playerNumber + 1)
+
+      let defaultPlayer = ''
+
       if (newPlayer == '' || newPlayer == undefined) {
-        players.name = player
-        players.number = (playerNumber+1)
-        setPlayer(otherPlayer + player)
-    }
-      else {
-        players.name = newPlayer
-        players.number = playerNumber+1
-        setPlayer(otherPlayer + newPlayer)
+
+        defaultPlayer = 'player' + (playerNumber + 1)
+
       }
+      else {
+
+        defaultPlayer = newPlayer
+
+      }
+
+      playerArray[playerNumber] = defaultPlayer
+
+      showPlayer()
       storePlayer()
     }
     else {
@@ -101,13 +115,13 @@ export default function Play({ navigation, route }) {
 
     <View style={styles.container} contentContainerStyle={styles.contentContainer} >
 
-      <TouchableOpacity style={[playStyles.addInputButton, playStyles.text, { flexDirection: 'row' }]} onPress={() => playerMenu()}>
+      <TouchableOpacity style={[playStyles.addInputButton, playStyles.buttonText, { flexDirection: 'row' }]} onPress={() => playerMenu()}>
         <Text style={{ color: 'white', marginRight: -5, marginLeft: 15 }}>{playerNumber}</Text>
         <Icon
           reverse
           name='md-person-add'
           type='ionicon'
-          color='#091324'
+          color='#111b2c'
           size={17}
         />
       </TouchableOpacity>
@@ -115,36 +129,45 @@ export default function Play({ navigation, route }) {
       <View style={[playStyles.playerMenuStyle, !inputTextON && { display: 'none' }]}>
         <View style={playStyles.inputView}>
 
-          <TextInput style={[playStyles.playerInput, playStyles.text]} onChangeText={text => setDefaultInputText(text)} value={defaultInputText} />
+          <TextInput style={[playStyles.playerInput, playStyles.buttonText]} onChangeText={text => setDefaultInputText(text)} value={defaultInputText} />
           <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={[playStyles.saveInputButton, playStyles.text, { marginRight: 20 }]} onPress={() => saveInput(defaultInputText)}>
+            <TouchableOpacity style={[playStyles.saveInputButton, playStyles.buttonText, { marginRight: 20 }]} onPress={() => saveInput(defaultInputText)}>
               <Text style={{ color: 'white' }}>Save</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[playStyles.saveInputButton, playStyles.text]} onPress={() => removeStoredPlayer()}>
+            <TouchableOpacity style={[playStyles.saveInputButton, playStyles.buttonText]} onPress={() => removeStoredPlayer()}>
               <Text style={{ color: 'white' }}>Remove</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.MainText}>Jogadores:{"\n"} {otherPlayer}</Text>
+          <View style={[playStyles.playerColor,{backgroundColor :'blue'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'white'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'pink'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'orange'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'grey'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'red'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'purple'}]}/>
+          <View style={[playStyles.playerColor,{backgroundColor :'green'}]}/>
+          <Text style={[playStyles.text,{fontSize:25,marginTop:10}]}>Jogadores:</Text>
+          <Text style={[playStyles.text,{marginTop:35}]}>{"\n"}{player}</Text>
         </View>
       </View>
 
       <View>
         <View style={[backMenuOp && { opacity: 0.2 }, { marginTop: 50 }]}>
 
-          <OptionButton
-            label="Baralho classico"
+          <TouchableOpacity
+            style={styles.option}
             onPress={() => navigation.navigate('Game')}
-          />
+          ><Text style={styles.optionText}>Baralho basico</Text></TouchableOpacity>
 
-          <OptionButton
-            label="Seus baralhos"
+          <TouchableOpacity
+            style={styles.option}
             onPress={() => navigation.navigate('Decks')}
-          />
+          ><Text style={styles.optionText}>Seus baralhos</Text></TouchableOpacity>
 
-          <OptionButton
-            label="Crie seu baralho"
+          <TouchableOpacity
+            style={styles.option}
           //onPress={() => navigation.navigate('Create')}
-          />
+          ><Text style={styles.optionText}>Crie seu baralho</Text></TouchableOpacity>
 
         </View>
       </View>
@@ -159,9 +182,9 @@ const playStyles = StyleSheet.create({
   addInputButton: {
     height: 50,
     width: 60,
-    backgroundColor: '#091324',
+    backgroundColor: '#111b2c',
     left: 290,
-    top: 15,
+    top: 8,
     zIndex: 1,
     position: 'absolute',
   },
@@ -182,17 +205,33 @@ const playStyles = StyleSheet.create({
   },
   text: {
     alignItems: 'center',
-    textAlign: 'center',
     justifyContent: 'center',
-    color: 'black',
+    color: 'white',
+    fontSize:19,
+    position:'absolute',
+    top:80,
+  },
+  buttonText:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontSize:18,
   },
   playerMenuStyle: {
     zIndex: 1,
-    backgroundColor: '#091324',
-    height: 400,
+    backgroundColor: '#111b2c',
+    height: 500,
     width: 250,
-    top: 55,
+    top: 65,
     left: 55,
+  },
+  playerColor:{
+      height:10,
+      width:10,
+      margin:35,
+      position:'relative',
+      left:-60,
+      top:5,
   },
 
 });
