@@ -1,27 +1,27 @@
 {
     "cards":[
         {
-            "texto": "Lorem ipsum dolor sit amet, 0",
+            "text": "Lorem ipsum dolor sit amet, 0",
             "id": "0"
         },
         {
-            "texto": " eget porta lacus egestas ut. 1",
+            "text": " eget porta lacus egestas ut. 1",
             "id": "1"
         },
         {
-            "texto": "Lorem ipsum dolor sit amet, 2",
+            "text": "Lorem ipsum dolor sit amet, 2",
             "id": "2"
         },
         {
-            "texto": " eget porta lacus egestas ut. 3",
+            "text": " eget porta lacus egestas ut. 3",
             "id": "3"
         },
         {
-            "texto": "Lorem ipsum dolor sit amet, 4",
+            "text": "Lorem ipsum dolor sit amet, 4",
             "id": "4"
         },
         {
-            "texto": " eget porta lacus egestas ut. 5",
+            "text": " eget porta lacus egestas ut. 5",
             "id": "5"
         }
     

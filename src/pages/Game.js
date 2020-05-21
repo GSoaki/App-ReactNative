@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
+import { Text, StyleSheet, View, Image, AsyncStorage } from 'react-native';
 
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import * as data from './../game/Basic.json';
 
@@ -49,7 +49,7 @@ export default function Game({ navigation }) {
         for (var item of arr) {
 
             if (item.id == novo) {
-                setCardId(item.texto)
+                setCardId(item.text)
             }
 
         }
@@ -59,12 +59,12 @@ export default function Game({ navigation }) {
 
         <View style={[gameStyles.container, styles.container]} contentContainerStyle={styles.contentContainer}>
 
-            <TouchableOpacity onPress={() => changeCard()} style={gameStyles.card}>
+            <TouchableWithoutFeedback onPress={() => changeCard()} style={gameStyles.card}>
 
                 <Text style={gameStyles.cardText}>{cardId}</Text>
 
-            </TouchableOpacity>
-
+            </TouchableWithoutFeedback>
+            
         </View>
 
 
