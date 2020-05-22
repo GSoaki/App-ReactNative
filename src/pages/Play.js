@@ -138,6 +138,7 @@ export default function Play({ navigation, route }) {
               <Text style={{ color: 'white' }}>Remove</Text>
             </TouchableOpacity>
           </View>
+
           <View style={[playStyles.playerColor,{backgroundColor :'blue'}]}/>
           <View style={[playStyles.playerColor,{backgroundColor :'white'}]}/>
           <View style={[playStyles.playerColor,{backgroundColor :'pink'}]}/>
@@ -148,6 +149,7 @@ export default function Play({ navigation, route }) {
           <View style={[playStyles.playerColor,{backgroundColor :'green'}]}/>
           <Text style={[playStyles.text,{fontSize:25,marginTop:10}]}>Jogadores:</Text>
           <Text style={[playStyles.text,{marginTop:35}]}>{"\n"}{player}</Text>
+
         </View>
       </View>
 
@@ -156,13 +158,13 @@ export default function Play({ navigation, route }) {
 
           <TouchableOpacity
             style={styles.option}
-            onPress={() => navigation.navigate('Game')}
+            onPress={() => navigation.navigate('Game',{players:playerArray,playerNumber:playerNumber})}
           ><Text style={styles.optionText}>Baralho basico</Text></TouchableOpacity>
 
           <TouchableOpacity
             style={styles.option}
             onPress={() => navigation.navigate('Decks')}
-          ><Text style={styles.optionText}>Seus baralhos</Text></TouchableOpacity>
+          ><Text style={styles.optionText}>Seus baralhos</Text></TouchableOpacity> 
 
           <TouchableOpacity
             style={styles.option}

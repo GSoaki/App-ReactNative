@@ -36,20 +36,31 @@ function getRandomIntInclusive(min, max) {
 
 export default function Game({ navigation }) {
 
-    const [cardId, setCardId] = useState('');
+    const [card, setCard] = useState('');
+    const [players, setPlayers] = useState('');
+    const [playerNumber, setPlayerNumber] = useState(0);
+    const [randomPlayer, setPlayerRandomNumber] = useState(0);
+
+    const p = navigation.getParam('players')
+    const playerNum = navigation.getParam('playerNumber')
 
     var arr = data.cards
     var novo = 1
 
+
     changeCard = () => {
 
-        novo = getRandomIntInclusive(0,5)
-        console.log(novo)
+        setPlayers(p)
+        setPlayerNumber(playerNum)
+        newCard = getRandomIntInclusive(0,5)
+        newPlayer = getRandomIntInclusive(1,playerNumber-1)
+        console.log(newPlayer)
 
         for (var item of arr) {
 
-            if (item.id == novo) {
-                setCardId(item.text)
+            if (item.id == newCard) {
+                setCard(item.text)
+                setPlayerRandomNumber(newPlayer)
             }
 
         }
@@ -61,7 +72,8 @@ export default function Game({ navigation }) {
 
             <TouchableWithoutFeedback onPress={() => changeCard()} style={gameStyles.card}>
 
-                <Text style={gameStyles.cardText}>{cardId}</Text>
+                <Text style={gameStyles.cardText}>{card}</Text>
+                <Text style={gameStyles.cardText}>{players[randomPlayer]}</Text>
 
             </TouchableWithoutFeedback>
             
