@@ -1,29 +1,398 @@
 {
     "cards":[
         {
-            "text": "Lorem ipsum dolor sit amet, 0",
-            "id": "0"
+            "Title":"",
+            "text": "Tire uma peça de roupa",
+            "text2": "",
+            "id": "0",
+            "playerNumber":"1"
         },
         {
-            "text": " eget porta lacus egestas ut. 1",
-            "id": "1"
+            "Title":"",
+            "text": "Jogue Pedra,Papel,Tesoura com",
+            "text2": "quem perder bebe",
+            "id": "1",
+            "playerNumber":"2"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, 2",
-            "id": "2"
+            "Title":"",
+            "text": "Escolha alguém para beber",
+            "text2": "",
+            "id": "2",
+            "playerNumber":"1"
         },
         {
-            "text": " eget porta lacus egestas ut. 3",
-            "id": "3"
+            "Title":"",
+            "text": "Todos bebem",
+            "text2": "",
+            "id": "3",
+            "playerNumber":"0"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, 4",
-            "id": "4"
+            "Title":"",
+            "text": "Beba um gole",
+            "text2": "",
+            "id": "4",
+            "playerNumber":"1"
         },
         {
-            "text": " eget porta lacus egestas ut. 5",
-            "id": "5"
+            "Title":"",
+            "text": "Jogue par ou ímpar com",
+            "text2": "quem perder bebe",
+            "id": "5",
+            "playerNumber":"2"
+        },
+        {
+            "Title":"",
+            "text": "Todos bebem",
+            "text2": "",
+            "id": "6",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text": "Eles bebem",
+            "text2": "",
+            "id": "7",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text": "Elas bebem",
+            "text2": "",
+            "id": "8",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text": "Escolha duas pessoas para beber",
+            "text2": "",
+            "id": "9",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text": "Beba o copo inteiro ou um shot",
+            "text2": "",
+            "id": "10",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text": "As duas pessoas mais novas bebem",
+            "text2": "",
+            "id": "11",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text": "A pessoa a sua esquerda bebe",
+            "text2": "",
+            "id": "12",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Escolha alguém para beber a próxima rodada com você",
+            "text2":"",
+            "id": "13",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"A pessoa a sua esquerda bebe",
+            "text2":"",
+            "id": "14",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"Escudo:",
+            "text":"Relaxa, não precisa beber na próxima vez",
+            "text2":"",
+            "id": "15",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Escolha duas pessoas para darem uma estrelinha, a pior bebe",
+            "text2":"",
+            "id": "16",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Dê uma cambalhota com",
+            "text2":"a pior bebe",
+            "id":"17",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Desafio:",
+            "text":"Faça um desafio para",
+            "text2":"se não aceitar bebe um shot",
+            "id":"18",
+            "playerNumber":"2"
+        },
+        {
+            "Title":"Gato mia:",
+            "text":"Se acertar, a pessoa bebe, senão, você bebe",
+            "text2":"",
+            "id": "19",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Escolha três pessoas para beber",
+            "text2":"",
+            "id": "20",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Beba um gole para cada vogal do seu nome",
+            "text2":"",
+            "id": "21",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Dê um gole do copo de cada participante",
+            "text2":"",
+            "id":"22",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Escudo:",
+            "text":"Na próxima vez que tiver que beber, escolha alguem para beber no seu lugar",
+            "text2":"",
+            "id":"23",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Na próxima vez que tiver que beber, escolha alguem para beber no seu lugar",
+            "text2":"",
+            "id":"24",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Luta de dedão com",
+            "text2":"quem perder bebe",
+            "id":"25",
+            "playerNumber":"2"
+        },
+        {
+            "Title":"",
+            "text":"O primeiro que se mexer bebe",
+            "text2":"",
+            "id":"26",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"C ou S:",
+            "text":"Fale uma palavra e a próxima deve ser de um tema parecido, as palavras não podem começar com C ou S, quem errar bebe",
+            "text2":"",
+            "id":"27",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"Desafio:",
+            "text":"Tome um shot sem as mãos",
+            "text2":"",
+            "id":"28",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Dedinho:",
+            "text":"Quando você apoiar o dedinho, o ultimo a apoiar bebe",
+            "text2":"",
+            "id":"29",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Regra:",
+            "text":"Escolha uma palavra proibida, quem falar bebe",
+            "text2":"",
+            "id":"29",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Bom samaritano",
+            "text":"Bebe o drink das proximas duas pessoas junto com elas",
+            "text2":"",
+            "id":"30",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"O mais velho bebe",
+            "text2":"",
+            "id":"31",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O último que viu pornografia bebe",
+            "text2":"",
+            "id":"32",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O último que bebeu bebe de novo",
+            "text2":"",
+            "id":"33",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O mais alto bebe",
+            "text2":"",
+            "id":"34",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O mais baixo bebe",
+            "text2":"",
+            "id":"35",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"Desafio:",
+            "text":"Faça o 4, se não conseguir bebe",
+            "text2":"",
+            "id":"36",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Votação:",
+            "text":"todo mundo vota em outra pessoa, o mais votado bebe",
+            "text2":"",
+            "id":"37",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Coloque um gelo dentro da sua roupa",
+            "text2":"",
+            "id":"38",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Quem ja fez xixi na cama bebe",
+            "text2":"",
+            "id":"39",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Vire o copo junto com",
+            "text2":"o primeiro a terminar fica livre por quatro rodadas",
+            "id":"40",
+            "playerNumber":"2"
+        },
+        {
+            "Title":"",
+            "text":"Três chances para fazer o desafio da garrafa, se não conseguir bebe (Sem garrafa? Bebe)",
+            "text2":"",
+            "id":"41",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Quem estiver vestindo preto bebe",
+            "text2":"",
+            "id":"42",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Quem estiver vestindo branco bebe",
+            "text2":"",
+            "id":"43",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Quem ta sentado bebe",
+            "text2":"",
+            "id":"44",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Quem ta em pé bebe",
+            "text2":"",
+            "id":"45",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Quem bebeu na semana passada bebe de novo",
+            "text2":"",
+            "id":"46",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"Eu nunca:",
+            "text":"Diga algo que não fez, quem ja fez bebe",
+            "text2":"",
+            "id":"47",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"Drink da morte:",
+            "text":"Deixe os outros participantes fazerem um drink para você",
+            "text2":"",
+            "id":"48",
+            "playerNumber":"1"
+        },
+        {
+            "Title":"",
+            "text":"Todo mundo toma um shot",
+            "text2":"",
+            "id":"49",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O mais bêbado bebe",
+            "text2":"",
+            "id":"50",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O mais sóbrio bebe",
+            "text2":"",
+            "id":"51",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text": "Todos bebem",
+            "text2": "",
+            "id": "52",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"O mais sóbrio bebe",
+            "text2":"",
+            "id":"53",
+            "playerNumber":"0"
+        },
+        {
+            "Title":"",
+            "text":"Quem ja deu pt bebe",
+            "text2":"",
+            "id":"54",
+            "playerNumber":"0"
         }
+        
     
     ]
 }

@@ -3,16 +3,17 @@ import { StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#020c1c',
+        backgroundColor: '#ffffff',
     },
     option: {
-        backgroundColor:'#111b2c',
-        padding:20,
+        flexDirection:'row',
+        backgroundColor:'#000000',
+        padding:15,
         paddingHorizontal:60,
-        margin: 30,
+        margin: 25,
+        marginBottom:20,
         alignItems: 'center',
         justifyContent:'center',
-        borderRadius: 10,
         elevation: 20,
     },
     alignContainer:{
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     },
     optionText: {
         fontSize: 20,
-        textAlign: 'center',
+        textAlign:'left',
         color: 'white',
         fontWeight:'bold',
     },

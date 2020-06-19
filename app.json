@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/images/splash2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0f2140"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,8 +25,7 @@
       "supportsTablet": true
     },
     "androidNavigationBar": {
-      "barStyle": "light-content",
-      "backgroundColor": "#111b2c"
+      "barStyle":"light-content"
     }
   }
 }
