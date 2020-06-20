@@ -1,7 +1,6 @@
 import React,{ useEffect } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity, ScrollView, TextInput} from 'react-native';
+import { ScrollView, TextInput} from 'react-native';
 
-import styles from '../../styles/styles';
 
 const Cards = (props) => {
     const cardArray = []

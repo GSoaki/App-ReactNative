@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, ScrollView, AsyncStorage, TextInput, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, AsyncStorage, TextInput, Alert } from 'react-native';
 import { Icon, Overlay } from 'react-native-elements'
+
+import {Wrapper,Card,CardText} from './styles'
 
 import Cards from './cards'
 
-import styles from '../../styles/styles';
-
 const defaultDeck = "baralho básico"
 
-export default function Decks({ navigation }) {
+const MAX_DECK = 10
+
+export default function Decks() {
 
     const [deckNameArray, setDeckNameArray] = useState([]);
-    const [deckCardArray, setDeckCardArray] = useState([[]]);
+    const [deckCardArray, setDeckCardArray] = useState([]);
     const [overlay, setOverlay] = useState(false)
     const [overlayIndex, setOverlayIndex] = useState(0)
     const [playDeck, setPlayDeck] = useState('')
@@ -20,9 +22,9 @@ export default function Decks({ navigation }) {
 
         const play = getAsyncStore('playDeck')
         setPlayDeck(play)
-      
 
-        if(playDeck == ''){
+
+        if (playDeck == '') {
             setPlayDeck(defaultDeck)
         }
 
@@ -36,40 +38,49 @@ export default function Decks({ navigation }) {
             const newArray = deckNameArray
             newArray.splice(index, 1)
 
-            console.log(newArray)
-
             setDeckNameArray(newArray)
 
             removeDeckCard(index)
 
-            await removeStoredDeck()
+            asyncStore()
         }
 
     }
 
-    const asyncStore = async (name,value) => {
-        return (
-          await AsyncStorage.setItem(name, JSON.stringify(value))
+    const asyncStore = async () => {
+
+        await AsyncStorage.setItem('deckName', JSON.stringify(deckNameArray))
             .then(json => console.log('success!'))
-            .catch(error => console.log('error!')))
+            .catch(error => console.log('error!')),
+
+            await AsyncStorage.setItem('deckCard', JSON.stringify(deckCardArray))
+                .then(json => console.log('success!'))
+                .catch(error => console.log('error!'))
     }
-    
+
     const getAsyncStore = async (name) => {
-    
-        const item = null
-    
-        await AsyncStorage.getItem(name)
-        .then(req => JSON.parse(req))
-        .then(json => (item = json))
-        .catch(error => console.log('error!'))
-    
-        return (item)
+
+        await AsyncStorage.getItem('deckName')
+            .then(req => JSON.parse(req))
+            .then(json => setDeckNameArray(json))
+            .catch(error => console.log('error!')),
+
+            await AsyncStorage.getItem('deckCard')
+                .then(req => JSON.parse(req))
+                .then(json => setDeckCardArray(json))
+                .catch(error => console.log('error!'))
+
     }
 
     const addCard = (index) => {
 
         let newDeckCardArray = deckCardArray
-        newDeckCardArray[index].push("carta" + (deckCardArray[index].length + 1))
+
+        const carta = "carta" + (deckCardArray[index].length + 1)
+
+        newDeckCardArray[index].push(carta)
+
+        console.log(newDeckCardArray)
 
         setDeckCardArray(newDeckCardArray)
     }
@@ -100,16 +111,16 @@ export default function Decks({ navigation }) {
     const updatePlayDeck = (name) => {
 
         setPlayDeck(name)
-        
-        changePlayDeck()
 
     }
 
     const addDeck = () => {
 
-        const defaultName = 'Deck' + (deckNameArray.length + 1)
+        if(deckNameArray.length < MAX_DECK){
+            const defaultName = 'Deck' + (deckNameArray.length + 1)
 
-        updateDecks(defaultName)
+            updateDecks(defaultName)
+        }
 
     }
 
@@ -140,12 +151,13 @@ export default function Decks({ navigation }) {
             updatePlayDeck(defaultDeck)
         }
 
+        setDeckNameArray([""])
 
     }, []);
 
     useEffect(() => {
 
-        asyncStore('deck',deckNameArray)
+        asyncStore('deck', deckNameArray)
 
         if (deckNameArray.indexOf(playDeck) == -1) {
             updatePlayDeck(defaultDeck)
@@ -155,11 +167,9 @@ export default function Decks({ navigation }) {
 
     return (
 
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <Wrapper contentContainerStyle={{alignItems:'center'}}>
             <Text style={{ backgroundColor: '#000', color: '#fff', padding: 5, margin: 5 }}>Baralho ativo: {playDeck}</Text>
 
-
-          
             <Overlay onBackdropPress={() => updateOverlay()} isVisible={overlay} overlayStyle={{ height: 450, width: 275, backgroundColor: '#000000', borderColor: '#ffffff', borderWidth: 1 }}>
 
                 <TextInput style={[{ fontSize: 22, marginTop: 20, color: '#ffffff', textAlign: 'center' }]}>{deckNameArray[overlayIndex]}</TextInput>
@@ -204,41 +214,20 @@ export default function Decks({ navigation }) {
 
             {deckNameArray.map((currElement, index) => (
 
-                <TouchableOpacity onPress={() => updateOverlay(index)} key={index} style={gameStyles.card}>
+                <Card onPress={() => updateOverlay(index)} key={index} >
 
-                    <TextInput editable={true} style={gameStyles.cardText}>{deckNameArray[index]}</TextInput>
+                    <CardText >{deckNameArray[index]}</CardText>
 
-                </TouchableOpacity>
+                </Card>
             ))}
 
-        </ScrollView>
+        </Wrapper>
 
     );
 
 }
 
-const gameStyles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    card: {
-        backgroundColor: '#000000',
-        height: 150,
-        width: 320,
-        justifyContent: 'center',
-        zIndex: 1,
-        marginTop: 20,
-        elevation: 20,
-        elevation: 20,
-        alignItems: 'center'
-    },
-    cardText: {
-        color: 'white',
-        fontSize: 20,
-    },
 
-});
 
 
 

@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, createRef } from 'react';
 import { TouchableOpacity, Text, TextInput, View, StyleSheet, AsyncStorage, Alert } from 'react-native';
 import { Icon, Overlay } from 'react-native-elements'
 
-import styles from '../../styles/styles';
+import { OptionText, Option, Container } from './styles'
 
 const color = ["white", 'blue', 'red', 'green', 'yellow', 'pink', 'purple', 'orange', 'grey']
 
-const MAX_PLAYER_NUMBER = 8
+const MAX_PLAYER_NUMBER = 10
 const defaultDeck = "baralho básico"
 
 export default function Play({ navigation, route }) {
@@ -22,8 +22,9 @@ export default function Play({ navigation, route }) {
     for (let step = playerRefArray.length; step < playerArray.length; step++) {
       playerRefArray[step] = createRef()
     }
-    
+
   }, [playerArray.length])
+
 
   useEffect(() => {
 
@@ -49,11 +50,12 @@ export default function Play({ navigation, route }) {
 
     if (playerArray.length > 0) {
 
-      const newArray = playerArray
+      const newArray = [...playerArray]
       newArray.splice(index, 1)
 
       setPlayerArray(newArray)
       asyncStore()
+
     }
 
   }
@@ -61,7 +63,7 @@ export default function Play({ navigation, route }) {
   const changePlayer = (index, value) => {
     if (playerArray.length > 0) {
 
-      const newArray = playerArray
+      const newArray = [...playerArray]
 
       newArray.splice(index, 1, value)
 
@@ -147,7 +149,7 @@ export default function Play({ navigation, route }) {
 
   return (
 
-    <View style={styles.container} contentContainerStyle={styles.contentContainer} >
+    <Container contentContainerStyle={{ alignText: 'center' }} >
 
       <TouchableOpacity style={[playStyles.addInputButton, playStyles.buttonText, { flexDirection: 'row' }]} onPress={() => playerMenu()}>
         <Text style={{ color: 'white', marginRight: -5, marginLeft: 15 }}>{playerArray.length}</Text>
@@ -163,7 +165,7 @@ export default function Play({ navigation, route }) {
       <Overlay onBackdropPress={() => playerMenu()} isVisible={overlay} overlayStyle={{ backgroundColor: '#000000', minHeight: 350, borderColor: '#fff', borderWidth: 1 }}>
         <View style={playStyles.inputView}>
 
-          <TextInput style={[playStyles.playerInput, playStyles.buttonText]}  onChangeText={text => setDefaultInputText(text)} value={defaultInputText} />
+          <TextInput style={[playStyles.playerInput, playStyles.buttonText]} onChangeText={text => setDefaultInputText(text)} value={defaultInputText} />
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity style={[playStyles.saveInputButton, playStyles.buttonText]} onPress={() => saveInput(defaultInputText)}>
               <Text style={{ color: 'white' }}>Add +</Text>
@@ -177,9 +179,9 @@ export default function Play({ navigation, route }) {
               <View key={index} style={{ flexDirection: 'row', marginTop: -20 }}>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <View style={{ backgroundColor: color[index], width: 10, height: 10, marginRight: 20 }} /><TextInput 
-                  ref={playerRefArray[index]}  onChangeText={text => changePlayer(index, text)} maxLength={15} 
-                  style={{ color: '#ffffff', fontSize: 16 }}>{playerArray[index]}</TextInput>
+                  <View style={{ backgroundColor: color[index], width: 10, height: 10, marginRight: 20 }} /><TextInput
+                    ref={playerRefArray[index]} onChangeText={text => changePlayer(index, text)} maxLength={15}
+                    style={{ color: '#ffffff', fontSize: 16 }}>{playerArray[index]}</TextInput>
                 </View>
 
                 <TouchableOpacity ><Icon
@@ -210,15 +212,15 @@ export default function Play({ navigation, route }) {
       <View>
         <View>
 
-          <TouchableOpacity
-            style={styles.option}
+          <Option
             onPress={() => startGame()}
           >
 
             <View>
-              <Text style={styles.optionText}>Jogue</Text>
-              <Text style={[styles.optionText, { fontSize: 15 }]}>Com {playDeck}</Text
-              ></View>
+              <OptionText >Jogue</OptionText>
+              <OptionText style={{ fontSize: 15 }}>Com {playDeck}</OptionText>
+            </View>
+
             <Icon
               reverse
               name='md-play'
@@ -226,13 +228,12 @@ export default function Play({ navigation, route }) {
               color='#000000'
               size={30}
             />
-          </TouchableOpacity>
+          </Option>
 
-          <TouchableOpacity
-            style={styles.option}
+          <Option
             onPress={() => navigation.navigate('Decks')}
           >
-            <Text style={styles.optionText}>Seus baralhos</Text>
+            <OptionText>Seus baralhos</OptionText>
             <Icon
               reverse
               name='md-archive'
@@ -240,7 +241,7 @@ export default function Play({ navigation, route }) {
               color='#000000'
               size={30}
             />
-          </TouchableOpacity>
+          </Option>
 
 
 
@@ -248,7 +249,7 @@ export default function Play({ navigation, route }) {
       </View>
 
 
-    </View>
+    </Container>
   );
 
 }

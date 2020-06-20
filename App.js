@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import {StatusBar} from 'react-native'
+import {ThemeProvider} from 'styled-components'
 import GeneralStatusBarColor from './src/config/GeneralStatusBarColor';
 import Routes from './src/routes';
 
