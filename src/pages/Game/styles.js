@@ -10,12 +10,12 @@ export const Wrapper = styled.View`
 `;
 
 export const Card = styled(Animated.View)`
-        background-color:#000;
-        height: 400px;
-        width: 320px;
-        justify-content: center;
-        z-index: 1;
-        padding:20px;
+    background-color:#000000;
+    height: 400px;
+    width: 320px;
+    justify-content: center;
+    z-index: 1;
+    padding:20px;
 `;
 
 

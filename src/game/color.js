@@ -1,0 +1,1 @@
+export default colors = ["white", 'blue', 'red', 'green', 'yellow', 'pink', 'purple', 'orange', 'grey']

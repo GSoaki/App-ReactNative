@@ -13,7 +13,7 @@ const screens = {
     Home:{
         screen:Home,
         navigationOptions:{
-            headerStyle:{borderBottomWidth:1,backgroundColor:'black',borderColor:'#fff'},
+            headerStyle:{borderBottomWidth:1,backgroundColor:'#000',borderColor:'#fff'},
             headerTitle:'Drink Game',
             headerTitleStyle:{alignSelf:'center'},
             headerRight:(()=><Image style={{height:35,width:35,marginRight:75}} source={logo}/>),
@@ -23,6 +23,8 @@ const screens = {
         screen:Game,
         navigationOptions:{
             headerTitle:'',
+            headerStyle:{backgroundColor:'#fff'},
+            headerTintColor:'#000'
         }    
     },
     Decks:{

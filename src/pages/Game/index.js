@@ -21,12 +21,14 @@ function getRandomIntInclusive(min, max) {
 export default function Game({ navigation }) {
 
     const [cardTitle, setCardTitle] = useState('');
-    const [card, setCard] = useState('');
-    const [card2, setCard2] = useState('');
-    const [players, setPlayers] = useState('');
-    const [playerNumber, setPlayerNumber] = useState(0);
+    const [cardText, setCardText] = useState('');
+    const [cardText2, setCardText2] = useState('');
     const [randomPlayer, setPlayerRandomNumber] = useState(0);
     const [randomPlayer2, setPlayer2RandomNumber] = useState(0);
+    
+    const [players, setPlayers] = useState('');
+    const [playerNumber, setPlayerNumber] = useState(0);
+
     const [playDeck, setPlayDeck] = useState('')
 
     const p = navigation.getParam('players')
@@ -57,8 +59,8 @@ export default function Game({ navigation }) {
 
             if (item.id == newCard) {
                 setCardTitle(item.Title)
-                setCard(item.text)
-                setCard2(item.text2)
+                setCardText(item.text)
+                setCardText2(item.text2)
 
                 if (item.playerNumber == 0) {
                     setPlayerRandomNumber('')
@@ -84,7 +86,6 @@ export default function Game({ navigation }) {
     }
 
     const translateY = new Animated.Value(0);
-    let offset = 0;
 
     const animatedEvent = Animated.event(
         [
@@ -97,25 +98,30 @@ export default function Game({ navigation }) {
         { useNativeDriver: true },
     )
 
+    let offset = 0;
+
     function onHandlerStateChanged(event) {
-        if(event.nativeEvent.oldState === State.ACTIVE){
+        if(event.nativeEvent.oldState == State.ACTIVE){
             const{ translationY } = event.nativeEvent
             let opened = false
+            
             offset += translationY;
 
-            if(translationY <= -80){
+            if(translationY <= -50){
                 opened = true
-                Animated.timing(translateY,{
-                    toValue: -300,
-                    useNativeDriver:true
-                }).start()
 
                 Animated.timing(translateY,{
+                    toValue: -800,
+                    duration: 800,
+                    useNativeDriver:true
+                }).start();
+
+                Animated.timing(translateY,{
+                    duration: 500,
                     toValue: 0,
                     useNativeDriver:true
-                }).start()
+                }).start(() => changeCard())
 
-                changeCard()
             }
             else{
                 Animated.timing(translateY,{
@@ -124,7 +130,6 @@ export default function Game({ navigation }) {
                     useNativeDriver:true
                 }).start()
             }
-
           
         }
     }
@@ -141,15 +146,15 @@ export default function Game({ navigation }) {
                     style={{
                         transform: [{
                             translateY: translateY.interpolate({
-                                inputRange: [-300, 0],
-                                outputRange: [-300, 0],
+                                inputRange: [-900, 0],
+                                outputRange: [-900, 0],
                                 extrapolate: 'clamp'
                             })
                         }]
                     }}>
-                    <TouchableHighlight  onPress={() => changeCard()}>
+                    <TouchableHighlight onPress={() => changeCard()}>
                         <View>
-                            <View style={[card == '' ? { display: 'flex' } : { display: 'none' }, { alignSelf: 'center' }]}>
+                            <View style={[cardText == '' ? { display: 'flex' } : { display: 'none' }, { alignSelf: 'center' }]}>
                                 <Icon
                                     reverse
                                     name='md-help'
@@ -159,17 +164,18 @@ export default function Game({ navigation }) {
 
                                 />
                             </View>
-                            <View style={[{ height: '80%', justifyContent: 'center' }, card != '' ? { display: 'flex' } : { display: 'none' }]}>
+                            <View style={[{ height: '80%', justifyContent: 'center' }, cardText != '' ? { display: 'flex' } : { display: 'none' }]}>
                                 <CardText style={{ fontSize: 25, color: 'white' }}>{cardTitle}</CardText>
                                 <CardText style={{ color: color[randomPlayer] }}>{players[randomPlayer]}</CardText>
-                                <CardText >{card}</CardText>
+                                <CardText >{cardText}</CardText>
                                 <CardText style={{ color: color[randomPlayer2] }}>{players[randomPlayer2]}</CardText>
-                                <CardText >{card2}</CardText>
+                                <CardText >{cardText2}</CardText>
                             </View>
 
-                            <Text style={{ color: '#ffffff', fontSize: 12, textAlignVertical: 'bottom', textAlign: 'center' }}>Clique ou deslize para Jogar</Text>
+                            
                         </View>
                     </TouchableHighlight>
+                    <Text style={{ color: '#ffffff', fontSize: 12, textAlignVertical: 'bottom', textAlign: 'center' }}>Clique ou deslize para Jogar</Text>
                 </Card>
             </PanGestureHandler>
 

@@ -4,7 +4,7 @@ import { Icon, Overlay } from 'react-native-elements'
 
 import { OptionText, Option, Container } from './styles'
 
-const color = ["white", 'blue', 'red', 'green', 'yellow', 'pink', 'purple', 'orange', 'grey']
+import color from '../../game/color'
 
 const MAX_PLAYER_NUMBER = 10
 const defaultDeck = "baralho básico"
@@ -69,9 +69,9 @@ export default function Play({ navigation, route }) {
 
       setPlayerArray(newArray)
 
-      asyncStore()
-
     }
+
+    asyncStore()
 
   }
 
