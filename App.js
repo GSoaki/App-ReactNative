@@ -1,18 +1,19 @@
-import React, { Component} from 'react';
-import {StatusBar} from 'react-native'
+import React from 'react';
 import {ThemeProvider} from 'styled-components'
 import GeneralStatusBarColor from './src/config/GeneralStatusBarColor';
 import Routes from './src/routes';
 
-export default class App extends Component {
-  render() {
+import themes from './src/config/themes'
+
+export default function App(){
+  
     return (
-      <>
+      <ThemeProvider theme={themes.light}>
       <GeneralStatusBarColor backgroundColor="#000000"
       barStyle="light-content"/>
       <Routes />
-      </>
+      </ThemeProvider>
     );
-  }
-}
+  
+} 
 

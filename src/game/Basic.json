@@ -124,7 +124,7 @@
             "text":"Dê uma cambalhota com",
             "text2":"a pior bebe",
             "id":"17",
-            "playerNumber":"1"
+            "playerNumber":"2"
         },
         {
             "Title":"Desafio:",
@@ -268,10 +268,10 @@
         },
         {
             "Title":"Votação:",
-            "text":"todo mundo vota em outra pessoa, o mais votado bebe",
+            "text":"Todo mundo vota em outra pessoa, o mais votado bebe",
             "text2":"",
             "id":"37",
-            "playerNumber":"1"
+            "playerNumber":"0"
         },
         {
             "Title":"",
@@ -400,7 +400,6 @@
             "playerNumber":"1"
         }
         
-    
     ]
 }
    

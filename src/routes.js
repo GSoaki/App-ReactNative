@@ -9,14 +9,14 @@ import Decks from './pages/Decks';
 
 import logo from './../assets/images/iconWhite.png'
 
-
 const screens = {
     Home:{
         screen:Home,
         navigationOptions:{
+            headerStyle:{borderBottomWidth:1,backgroundColor:'black',borderColor:'#fff'},
             headerTitle:'Drink Game',
             headerTitleStyle:{alignSelf:'center'},
-            headerRight:(()=><Image style={{height:35,width:35,marginRight:75}} source={logo}/>)
+            headerRight:(()=><Image style={{height:35,width:35,marginRight:75}} source={logo}/>),
         }    
     },
     Game:{

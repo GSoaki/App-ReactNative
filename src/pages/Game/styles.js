@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-
+import {Animated} from 'react-native';
 
 export const Wrapper = styled.View`
     flex: 1;
@@ -9,7 +9,7 @@ export const Wrapper = styled.View`
     justify-content: center;
 `;
 
-export const Card = styled.TouchableHighlight`
+export const Card = styled(Animated.View)`
         background-color:#000;
         height: 400px;
         width: 320px;

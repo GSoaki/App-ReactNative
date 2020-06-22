@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, View, AsyncStorage } from 'react-native';
-import { Icon } from 'react-native-elements'
+import { Text, View, AsyncStorage, TouchableHighlight } from 'react-native';
+import { Icon } from 'react-native-elements';
+
+import { Animated } from 'react-native';
+import { PanGestureHandler, State } from 'react-native-gesture-handler'
 
 import * as data from '../../game/Basic.json';
-
 import { Wrapper, Card, CardText } from './styles';
 
-const color = ["white", 'blue', 'red', 'green', 'yellow', 'pink', 'purple', 'orange', 'grey']
 
+
+const color = ["white", 'blue', 'red', 'green', 'yellow', 'pink', 'purple', 'orange', 'grey']
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -44,7 +47,6 @@ export default function Game({ navigation }) {
 
     const changeCard = () => {
 
-
         setPlayers(p)
         setPlayerNumber(playerNum)
         let newCard = getRandomIntInclusive(0, arr.length)
@@ -68,6 +70,9 @@ export default function Game({ navigation }) {
                 }
                 else if (item.playerNumber == 2) {
                     var newPlayer2 = getRandomIntInclusive(0, playerNumber - 1)
+                    while (newPlayer === newPlayer2) {
+                        newPlayer2 = getRandomIntInclusive(0, playerNumber - 1)
+                    }
                     setPlayerRandomNumber(newPlayer)
                     setPlayer2RandomNumber(newPlayer2)
                 }
@@ -78,32 +83,95 @@ export default function Game({ navigation }) {
         }
     }
 
+    const translateY = new Animated.Value(0);
+    let offset = 0;
+
+    const animatedEvent = Animated.event(
+        [
+            {
+                nativeEvent: {
+                    translationY: translateY,
+                }
+            }
+        ],
+        { useNativeDriver: true },
+    )
+
+    function onHandlerStateChanged(event) {
+        if(event.nativeEvent.oldState === State.ACTIVE){
+            const{ translationY } = event.nativeEvent
+            let opened = false
+            offset += translationY;
+
+            if(translationY <= -80){
+                opened = true
+                Animated.timing(translateY,{
+                    toValue: -300,
+                    useNativeDriver:true
+                }).start()
+
+                Animated.timing(translateY,{
+                    toValue: 0,
+                    useNativeDriver:true
+                }).start()
+
+                changeCard()
+            }
+            else{
+                Animated.timing(translateY,{
+                    toValue: 0,
+                    duration: 200,
+                    useNativeDriver:true
+                }).start()
+            }
+
+          
+        }
+    }
+
     return (
-
         <Wrapper contentContainerStyle={{ alignText: 'center' }}>
-            <Card onPress={() => changeCard()} >
-                <View>
-                    <View style={[card == '' ? { display: 'flex' } : { display: 'none' }, { alignSelf: 'center' }]}>
-                        <Icon
-                            reverse
-                            name='md-help'
-                            type='ionicon'
-                            color='#000000'
-                            size={100}
 
-                        />
-                    </View>
-                    <View style={[{ height: '80%', justifyContent: 'center' }, card != '' ? { display: 'flex' } : { display: 'none' }]}>
-                        <CardText style={{ fontSize: 25, color: 'white' }}>{cardTitle}</CardText>
-                        <CardText style={{ color: color[randomPlayer] }}>{players[randomPlayer]}</CardText>
-                        <CardText >{card}</CardText>
-                        <CardText style={{ color: color[randomPlayer2] }}>{players[randomPlayer2]}</CardText>
-                        <CardText >{card2}</CardText>
-                    </View>
+            <PanGestureHandler
+                onGestureEvent={animatedEvent}
+                onHandlerStateChange={onHandlerStateChanged}
 
-                    <Text style={{ color: '#ffffff', fontSize: 12, textAlignVertical: 'bottom', textAlign: 'center' }}>Clique ou deslize para Jogar</Text>
-                </View>
-            </Card>
+            >
+                <Card
+                    style={{
+                        transform: [{
+                            translateY: translateY.interpolate({
+                                inputRange: [-300, 0],
+                                outputRange: [-300, 0],
+                                extrapolate: 'clamp'
+                            })
+                        }]
+                    }}>
+                    <TouchableHighlight  onPress={() => changeCard()}>
+                        <View>
+                            <View style={[card == '' ? { display: 'flex' } : { display: 'none' }, { alignSelf: 'center' }]}>
+                                <Icon
+                                    reverse
+                                    name='md-help'
+                                    type='ionicon'
+                                    color='#000000'
+                                    size={100}
+
+                                />
+                            </View>
+                            <View style={[{ height: '80%', justifyContent: 'center' }, card != '' ? { display: 'flex' } : { display: 'none' }]}>
+                                <CardText style={{ fontSize: 25, color: 'white' }}>{cardTitle}</CardText>
+                                <CardText style={{ color: color[randomPlayer] }}>{players[randomPlayer]}</CardText>
+                                <CardText >{card}</CardText>
+                                <CardText style={{ color: color[randomPlayer2] }}>{players[randomPlayer2]}</CardText>
+                                <CardText >{card2}</CardText>
+                            </View>
+
+                            <Text style={{ color: '#ffffff', fontSize: 12, textAlignVertical: 'bottom', textAlign: 'center' }}>Clique ou deslize para Jogar</Text>
+                        </View>
+                    </TouchableHighlight>
+                </Card>
+            </PanGestureHandler>
 
         </Wrapper>
     );

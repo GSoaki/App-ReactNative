@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, createRef } from 'react';
-import { TouchableOpacity, Text, TextInput, View, StyleSheet, AsyncStorage, Alert } from 'react-native';
+import { TouchableOpacity, Text, TextInput, View, StyleSheet, AsyncStorage, Alert, ImagePropTypes } from 'react-native';
 import { Icon, Overlay } from 'react-native-elements'
 
 import { OptionText, Option, Container } from './styles'
@@ -65,7 +65,7 @@ export default function Play({ navigation, route }) {
 
       const newArray = [...playerArray]
 
-      newArray.splice(index, 1, value)
+      newArray[index] = value
 
       setPlayerArray(newArray)
 
@@ -162,7 +162,7 @@ export default function Play({ navigation, route }) {
         />
       </TouchableOpacity>
 
-      <Overlay onBackdropPress={() => playerMenu()} isVisible={overlay} overlayStyle={{ backgroundColor: '#000000', minHeight: 350, borderColor: '#fff', borderWidth: 1 }}>
+      <Overlay onBackdropPress={() => playerMenu()} isVisible={overlay} overlayStyle={{ backgroundColor: '#000000', minHeight: 350, borderColor: '#fff', borderWidth: 0.5}}>
         <View style={playStyles.inputView}>
 
           <TextInput style={[playStyles.playerInput, playStyles.buttonText]} onChangeText={text => setDefaultInputText(text)} value={defaultInputText} />
@@ -222,6 +222,7 @@ export default function Play({ navigation, route }) {
             </View>
 
             <Icon
+              style={{marginLeft:20}}
               reverse
               name='md-play'
               type='ionicon'
@@ -235,6 +236,7 @@ export default function Play({ navigation, route }) {
           >
             <OptionText>Seus baralhos</OptionText>
             <Icon
+              style={{marginLeft:20}}
               reverse
               name='md-archive'
               type='ionicon'
@@ -264,6 +266,8 @@ const playStyles = StyleSheet.create({
     top: 8,
     zIndex: 1,
     position: 'relative',
+    borderColor:'#fff',
+    borderWidth:0.5
   },
   inputView: {
     alignItems: 'center',
