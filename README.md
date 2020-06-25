@@ -15,8 +15,3 @@ Decks
 
 <img src="https://i.imgur.com/aKyHFuY.jpg" width="200">
 
-
-Game
-
-
-<img src="https://i.imgur.com/x1KjRes.jpg" width="200">
