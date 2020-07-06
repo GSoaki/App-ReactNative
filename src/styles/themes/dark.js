@@ -1,0 +1,1 @@
+export default {background:'#000',primary:'#000',color:'#fff'}

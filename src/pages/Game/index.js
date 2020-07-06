@@ -8,7 +8,7 @@ import { PanGestureHandler, State } from 'react-native-gesture-handler'
 import * as data from '../../game/Basic.json';
 import { Wrapper, Card, CardText } from './styles';
 
-
+import {usePlayer} from './../../context/playerContext'
 
 const color = ["white", 'blue', 'red', 'green', 'yellow', 'pink', 'purple', 'orange', 'grey']
 
@@ -18,23 +18,25 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export default function Game({ navigation }) {
+export default function Game() {
+
+    const { player } = usePlayer();
 
     const [cardTitle, setCardTitle] = useState('');
     const [cardText, setCardText] = useState('');
     const [cardText2, setCardText2] = useState('');
     const [randomPlayer, setPlayerRandomNumber] = useState(0);
     const [randomPlayer2, setPlayer2RandomNumber] = useState(0);
-    
-    const [players, setPlayers] = useState('');
-    const [playerNumber, setPlayerNumber] = useState(0);
 
     const [playDeck, setPlayDeck] = useState('')
 
-    const p = navigation.getParam('players')
-    const playerNum = p.length
+    const playerNum = player.length
 
     var arr = data.cards
+
+    const selectedDeck = () =>{
+        
+    }
 
     useEffect(() => {
         getPlayDeck()
@@ -49,11 +51,9 @@ export default function Game({ navigation }) {
 
     const changeCard = () => {
 
-        setPlayers(p)
-        setPlayerNumber(playerNum)
         let newCard = getRandomIntInclusive(0, arr.length)
         newCard = getRandomIntInclusive(0, arr.length)
-        var newPlayer = getRandomIntInclusive(0, playerNumber - 1)
+        var newPlayer = getRandomIntInclusive(0, playerNum - 1)
 
         for (var item of arr) {
 
@@ -71,9 +71,9 @@ export default function Game({ navigation }) {
                     setPlayer2RandomNumber('')
                 }
                 else if (item.playerNumber == 2) {
-                    var newPlayer2 = getRandomIntInclusive(0, playerNumber - 1)
+                    var newPlayer2 = getRandomIntInclusive(0, playerNum - 1)
                     while (newPlayer === newPlayer2) {
-                        newPlayer2 = getRandomIntInclusive(0, playerNumber - 1)
+                        newPlayer2 = getRandomIntInclusive(0, playerNum - 1)
                     }
                     setPlayerRandomNumber(newPlayer)
                     setPlayer2RandomNumber(newPlayer2)
@@ -101,36 +101,31 @@ export default function Game({ navigation }) {
     let offset = 0;
 
     function onHandlerStateChanged(event) {
-        if(event.nativeEvent.oldState == State.ACTIVE){
-            const{ translationY } = event.nativeEvent
-            let opened = false
-            
-            offset += translationY;
+        if (event.nativeEvent.oldState == State.ACTIVE) {
+            const { translationY } = event.nativeEvent
 
-            if(translationY <= -50){
-                opened = true
+            if (translationY <= -100) {
 
-                Animated.timing(translateY,{
-                    toValue: -800,
+                Animated.timing(translateY, {
+                    toValue: -900,
                     duration: 800,
-                    useNativeDriver:true
+                    useNativeDriver: true
                 }).start();
 
-                Animated.timing(translateY,{
-                    duration: 500,
+                Animated.timing(translateY, {
                     toValue: 0,
-                    useNativeDriver:true
+                    useNativeDriver: true
                 }).start(() => changeCard())
 
             }
-            else{
-                Animated.timing(translateY,{
+            else {
+                Animated.timing(translateY, {
                     toValue: 0,
                     duration: 200,
-                    useNativeDriver:true
+                    useNativeDriver: true
                 }).start()
             }
-          
+
         }
     }
 
@@ -165,14 +160,13 @@ export default function Game({ navigation }) {
                                 />
                             </View>
                             <View style={[{ height: '80%', justifyContent: 'center' }, cardText != '' ? { display: 'flex' } : { display: 'none' }]}>
-                                <CardText style={{ fontSize: 25, color: 'white' }}>{cardTitle}</CardText>
-                                <CardText style={{ color: color[randomPlayer] }}>{players[randomPlayer]}</CardText>
+                                <CardText style={{ fontSize: 25, color: 'white',marginBottom:15}}>{cardTitle}</CardText>
+                                <CardText style={{ color: color[randomPlayer] }}>{player[randomPlayer]}</CardText>
                                 <CardText >{cardText}</CardText>
-                                <CardText style={{ color: color[randomPlayer2] }}>{players[randomPlayer2]}</CardText>
+                                <CardText style={{ color: color[randomPlayer2] }}>{player[randomPlayer2]}</CardText>
                                 <CardText >{cardText2}</CardText>
                             </View>
 
-                            
                         </View>
                     </TouchableHighlight>
                     <Text style={{ color: '#ffffff', fontSize: 12, textAlignVertical: 'bottom', textAlign: 'center' }}>Clique ou deslize para Jogar</Text>

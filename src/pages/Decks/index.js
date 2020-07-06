@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, AsyncStorage, TextInput, Alert } from 'react-native';
 import { Icon, Overlay } from 'react-native-elements'
 
-import {Wrapper,Card,CardText} from './styles'
+import { Wrapper, Card, CardText } from './styles'
 
 import Cards from './cards'
 
@@ -10,7 +10,9 @@ const defaultDeck = "baralho básico"
 
 const MAX_DECK = 10
 
-export default function Decks() {
+export default function Decks({ navigation }) {
+
+    
 
     const [deckNameArray, setDeckNameArray] = useState([]);
     const [deckCardArray, setDeckCardArray] = useState([]);
@@ -116,7 +118,7 @@ export default function Decks() {
 
     const addDeck = () => {
 
-        if(deckNameArray.length < MAX_DECK){
+        if (deckNameArray.length < MAX_DECK) {
             const defaultName = 'Deck' + (deckNameArray.length + 1)
 
             updateDecks(defaultName)
@@ -167,44 +169,45 @@ export default function Decks() {
 
     return (
 
-        <Wrapper contentContainerStyle={{alignItems:'center'}}>
+        <Wrapper contentContainerStyle={{ alignItems: 'center' }}>
             <Text style={{ backgroundColor: '#000', color: '#fff', padding: 5, margin: 5 }}>Baralho ativo: {playDeck}</Text>
 
             <Overlay onBackdropPress={() => updateOverlay()} isVisible={overlay} overlayStyle={{ height: 450, width: 275, backgroundColor: '#000000', borderColor: '#ffffff', borderWidth: 1 }}>
+                <View>
+                    <TextInput style={[{ fontSize: 22, marginTop: 20, color: '#ffffff', textAlign: 'center' }]}>{deckNameArray[overlayIndex]}</TextInput>
+                    <Text style={[{ fontSize: 22, marginTop: 20, color: '#ffffff' }]}>Cartas:</Text>
 
-                <TextInput style={[{ fontSize: 22, marginTop: 20, color: '#ffffff', textAlign: 'center' }]}>{deckNameArray[overlayIndex]}</TextInput>
-                <Text style={[{ fontSize: 22, marginTop: 20, color: '#ffffff' }]}>Cartas:</Text>
+                    <Cards items={deckCardArray} />
 
-                <Cards items={deckCardArray} />
+                    <View style={{ flexDirection: 'row' }}>
 
-                <View style={{ flexDirection: 'row' }}>
-
-                    <TouchableOpacity onPress={() => addCard(overlayIndex)} style={{ marginTop: -15 }}><Icon
-                        reverse
-                        name='md-create'
-                        type='ionicon'
-                        color='#000000'
-                        size={21}
-                    /></TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => removeDeckCard()} style={{ marginLeft: -15, marginTop: -15 }}>
-                        <Icon
+                        <TouchableOpacity onPress={() => addCard(overlayIndex)} style={{ marginTop: -15 }}><Icon
                             reverse
-                            name='md-remove-circle'
+                            name='md-create'
                             type='ionicon'
                             color='#000000'
                             size={21}
-                        />
+                        /></TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => removeDeckCard()} style={{ marginLeft: -15, marginTop: -15 }}>
+                            <Icon
+                                reverse
+                                name='md-remove-circle'
+                                type='ionicon'
+                                color='#000000'
+                                size={21}
+                            />
+                        </TouchableOpacity>
+
+                    </View>
+                    <TouchableOpacity onPress={() => updatePlayDeck(deckNameArray[overlayIndex])} style={{ marginLeft: -15 }}>
+                        <Text style={{ color: '#fff', textAlign: 'center' }}>Selecionar este Deck</Text>
                     </TouchableOpacity>
 
+                    <TouchableOpacity onPress={() => deleteDeck(overlayIndex)} style={{ marginLeft: -15 }}>
+                        <Text style={{ color: '#fff', textAlign: 'center' }}>Remove Deck</Text>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => updatePlayDeck(deckNameArray[overlayIndex])} style={{ marginLeft: -15 }}>
-                    <Text style={{ color: '#fff', textAlign: 'center' }}>Selecionar este Deck</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => deleteDeck(overlayIndex)} style={{ marginLeft: -15 }}>
-                    <Text style={{ color: '#fff', textAlign: 'center' }}>Remove Deck</Text>
-                </TouchableOpacity>
 
             </Overlay>
 

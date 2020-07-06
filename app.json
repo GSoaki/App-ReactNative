@@ -21,11 +21,8 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "androidNavigationBar": {
-      "barStyle":"light-content"
+      "barStyle":"dark-content"
     }
   }
 }
