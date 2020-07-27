@@ -2,119 +2,105 @@
     "cards":[
         {
             "Title":"",
-            "text": "Tire uma peça de roupa",
+            "text": "Remove a piece of cloth",
             "text2": "",
             "id": "0",
             "playerNumber":"1"
         },
         {
             "Title":"",
-            "text": "Jogue Pedra,Papel,Tesoura com",
-            "text2": "quem perder bebe",
+            "text": "Play rock,paper,scissors",
+            "text2": "loser drink",
             "id": "1",
             "playerNumber":"2"
         },
         {
             "Title":"",
-            "text": "Escolha alguém para beber",
+            "text": "Pick someone to drink",
             "text2": "",
             "id": "2",
             "playerNumber":"1"
         },
         {
             "Title":"",
-            "text": "Todos bebem",
+            "text": "Everyone drinks",
             "text2": "",
             "id": "3",
             "playerNumber":"0"
         },
         {
             "Title":"",
-            "text": "Beba um gole",
+            "text": "Take a sip",
             "text2": "",
             "id": "4",
             "playerNumber":"1"
         },
         {
             "Title":"",
-            "text": "Jogue par ou ímpar com",
-            "text2": "quem perder bebe",
+            "text": "Even or odd with",
+            "text2": "loser drink",
             "id": "5",
             "playerNumber":"2"
         },
         {
             "Title":"",
-            "text": "Todos bebem",
+            "text": "Girls drink",
             "text2": "",
             "id": "6",
             "playerNumber":"0"
         },
         {
             "Title":"",
-            "text": "Eles bebem",
+            "text": "Boys drink",
             "text2": "",
             "id": "7",
             "playerNumber":"0"
         },
         {
             "Title":"",
-            "text": "Elas bebem",
+            "text": "Pick someone to drink",
             "text2": "",
             "id": "8",
-            "playerNumber":"0"
-        },
-        {
-            "Title":"",
-            "text": "Escolha duas pessoas para beber",
-            "text2": "",
-            "id": "9",
             "playerNumber":"1"
         },
         {
             "Title":"",
-            "text": "Beba o copo inteiro ou um shot",
+            "text": "Drink the entire cup or take a shot",
             "text2": "",
             "id": "10",
             "playerNumber":"1"
         },
         {
             "Title":"",
-            "text": "As duas pessoas mais novas bebem",
+            "text": "The two younger people drink",
             "text2": "",
             "id": "11",
             "playerNumber":"0"
         },
         {
             "Title":"",
-            "text": "A pessoa a sua esquerda bebe",
+            "text": "The person at your left drink",
             "text2": "",
             "id": "12",
             "playerNumber":"0"
         },
         {
             "Title":"",
-            "text":"Escolha alguém para beber a próxima rodada com você",
+            "text":"Pick someone to drink the next round with you",
             "text2":"",
             "id": "13",
             "playerNumber":"1"
         },
         {
-            "Title":"",
-            "text":"A pessoa a sua esquerda bebe",
-            "text2":"",
-            "id": "14",
-            "playerNumber":"0"
-        },
-        {
-            "Title":"Escudo:",
-            "text":"Relaxa, não precisa beber na próxima vez",
+            "Title":"Shield:",
+            "text":"Chill, no need to Drink next round",
             "text2":"",
             "id": "15",
             "playerNumber":"1"
         },
         {
             "Title":"",
-            "text":"Escolha duas pessoas para darem uma estrelinha, a pior bebe",
+            "text":"Choose two people to do a Cartwheel, the worst drink",
             "text2":"",
             "id": "16",
             "playerNumber":"1"

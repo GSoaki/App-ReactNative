@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AppE",
-    "slug": "AppE",
+    "name": "DrinkGame",
+    "slug": "DrinkGame",
     "platforms": [
       "ios",
       "android"
@@ -23,6 +23,9 @@
     ],
     "androidNavigationBar": {
       "barStyle":"dark-content"
+    },
+    "android":{
+      "package": "com.Soaki.DrinkGame"
     }
   }
 }

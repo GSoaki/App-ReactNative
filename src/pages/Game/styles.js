@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {Animated} from 'react-native';
+import { Animated } from 'react-native';
 
 export const Wrapper = styled.View`
     flex: 1;
@@ -25,8 +25,32 @@ export const CardText = styled.Text`
     color:#ffffff;
 `;
 
-  
-      
- 
+export const CardInfo = styled.View`
+    flex-direction: row;
+    border-width:1px;
+    border-color:#000;
+    background-color:#fff;
+    min-height: 100px;
+    width:90%;
+    margin:20px;
+    margin-top:10px;
+`;
+
+export const CardInfoTitle = styled.Text`
+    color:#000;
+    font-size:20px;
+    text-align:center;
+    justify-content:center;
+    margin:5px;
+`;
+
+export const CardInfoText = styled.Text`
+    color:#000;
+    font-size:14px;
+    text-align:center;
+    max-width:80%;
+`;
+
+
 
 

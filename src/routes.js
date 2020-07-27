@@ -26,6 +26,8 @@ const icons = {
     }
 }
 
+
+
 const Tab = createBottomTabNavigator();
 
 const Stack = createStackNavigator();
@@ -33,7 +35,7 @@ const Stack = createStackNavigator();
 function TabStack() {
     return (
         <Tab.Navigator
-            initialRouteName="Players"
+            initialRouteName="Home"
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ color, size }) => {
                     const { lib: Icon, name } = icons[route.name];
@@ -44,25 +46,19 @@ function TabStack() {
                 activeTintColor: '#070',
                 inactiveTintColor: '#fff',
                 activeBackgroundColor: '#000',
-                inactiveBackgroundColor: '#000'
+                inactiveBackgroundColor: '#000',
+                keyboardHidesTabBar: true
             }}>
+            <Tab.Screen
+                options={{
+                    title: 'Início'
+                }}
+                name="Home" component={Home} />
             <Tab.Screen
                 options={{
                     title: 'Jogadores'
                 }}
-                name="Players"  component={Players} />
-
-            <Tab.Screen
-                options={{
-                    title: 'Home'
-                }}
-                name="Home"   component={Home} />
-
-            <Tab.Screen
-                options={{
-                    title: 'Baralhos'
-                }}
-                name="Decks"  component={Decks} />
+                name="Players" component={Players} />
 
         </Tab.Navigator>
     );

@@ -1,1 +1,1 @@
-export default {background:'#000',primary:'#000',color:'#fff'}
+export default {background:'#000',primary:'#000',color:'#fff',dark:'#000',light:'#fff'}
