@@ -2,6 +2,8 @@
 
 Aplicativo de Drink Game feito com React Native
 
+Drink Game App made with React Native
+
 
 
 Home
